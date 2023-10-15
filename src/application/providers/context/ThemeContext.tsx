@@ -28,7 +28,7 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
 
   return (
     <ThemeContext.Provider value={contextValue}>
-      <div className={theme}>{children}</div>
+      <div className={[theme, "content-provider"].join(" ")}>{children}</div>
     </ThemeContext.Provider>
   );
 }
