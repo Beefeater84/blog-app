@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import {
   ThemeContextType,
   ThemeType,
@@ -16,9 +16,13 @@ type ThemeContextProviderProps = {
 };
 
 export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
-  const [theme, setTheme] = useState<ThemeType>("light");
+  const localTheme =
+    (localStorage.getItem("theme") as ThemeType) || ("light" as ThemeType);
+
+  const [theme, setTheme] = useState<ThemeType>(localTheme);
 
   const switchTheme = () => {
+    localStorage.setItem("theme", theme === "light" ? "dark" : "light");
     setTheme(theme === "light" ? "dark" : "light");
   };
 
