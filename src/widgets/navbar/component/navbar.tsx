@@ -1,5 +1,7 @@
 import Link from "next/link";
 import ThemeToggle from "@/features/swith-theme/components/theme-toggle";
+import AuthButton from "@/features/authButton/authButton";
+import SignOutBtn from "@/features/signOutBtn/sign-out";
 
 export default function Navbar(): JSX.Element {
   return (
@@ -16,6 +18,8 @@ export default function Navbar(): JSX.Element {
             <Link href="#">About</Link>
           </li>
         </ul>
+        <AuthButton />
+        <SignOutBtn />
         <div>
           <ThemeToggle />
         </div>
