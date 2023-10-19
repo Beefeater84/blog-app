@@ -2,9 +2,10 @@ import Link from "next/link";
 import ThemeToggle from "@/features/swith-theme/components/theme-toggle";
 import AuthButtons from "@/widgets/navbar/component/authButtons";
 
-export default function Navbar(): JSX.Element {
+export default function Navbar() {
   return (
     <div>
+      <div>HIKING BLOG</div>
       <nav>
         <ul>
           <li>
