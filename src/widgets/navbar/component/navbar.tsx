@@ -1,7 +1,5 @@
 import Link from "next/link";
 import ThemeToggle from "@/features/swith-theme/components/theme-toggle";
-import AuthButton from "@/features/authButton/authButton";
-import SignOutBtn from "@/features/signOutBtn/sign-out";
 import AuthButtons from "@/widgets/navbar/component/authButtons";
 
 export default function Navbar(): JSX.Element {
