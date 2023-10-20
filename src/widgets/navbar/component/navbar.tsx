@@ -4,9 +4,9 @@ import AuthButtons from "@/widgets/navbar/component/authButtons";
 
 export default function Navbar() {
   return (
-    <div className="flex justify-between items-center h-[80px] container border-b border-stroke-color">
+    <div className="font-poppins flex justify-between items-center h-[80px] container border-b border-stroke-color">
       <div className="flex gap-2 items-center">
-        <div className="font-poppins font-semibold text-xl text-logo-color mr-3">
+        <div className="font-semibold text-xl text-logo-color mr-3">
           HIKING BLOG
         </div>
         <nav>
@@ -28,9 +28,9 @@ export default function Navbar() {
             </li>
           </ul>
         </nav>
-        <ThemeToggle />
       </div>
-      <div>
+      <div className="flex items-center gap-2">
+        <ThemeToggle />
         <AuthButtons />
       </div>
     </div>
