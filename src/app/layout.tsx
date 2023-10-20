@@ -43,7 +43,6 @@ export default function RootLayout({
         <ThemeContextProvider>
           <AuthProvider>
             <header>
-              <Image src="/vercel.svg" alt="g" width={20} height={20} />
               <Navbar />
             </header>
             {children}
