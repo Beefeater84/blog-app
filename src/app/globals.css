@@ -3,36 +3,40 @@
 @tailwind utilities;
 
 :root {
+    --white: #fff;
     --text-color: #000;
-    --background-color: #fff;
+    --background-color: #FAFAFB;
     --active-color: #0062FF;
     --normal-color: #171725;
 }
 
 
 .dark{
-    /*--text-color: #fff;*/
-    /*--background-color: #000;*/
+    --text-color: #fff;
+    --background-color: #000;
 }
 
 body{
     font-size: 14px;
 }
 
-.light{
-    --text-color: #000;
-    --background-color: #fff;
-}
-
 .content-provider{
+    transition: all 0.3s ease-in-out;
     color: var(--text-color);
     background-color: var(--background-color);
+    height: 100vh;
 }
 
 .container{
     max-width: 1200px;
     padding-inline: 1rem;
     margin: 0 auto;
+}
+
+h1.page-title{
+    font-weight: 600;
+    font-size: 3rem;
+    letter-spacing: 0.2px;
 }
 
 

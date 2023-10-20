@@ -18,15 +18,16 @@ const config: Config = {
         transparent: "transparent",
         current: "currentColor",
         "text-color": "#000",
-        "background-color": "#fff",
         "active-color": "#50B5FF",
         "normal-color": "#171725",
         "menu-color": "#696974",
+        "menu-color-dark": "#B5B5BE",
         "logo-color": "#44444F",
         "stroke-color": "#F1F1F5",
       },
     },
   },
   plugins: [],
+  darkMode: "class",
 };
 export default config;
