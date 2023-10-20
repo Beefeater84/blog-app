@@ -5,7 +5,7 @@ import { ThemeContext } from "@/application/providers/context/ThemeContext";
 import "./theme-toggle.css";
 
 export default function ThemeToggle() {
-  const { switchTheme } = useContext(ThemeContext);
+  const { theme, switchTheme } = useContext(ThemeContext);
 
   return (
     <button onClick={switchTheme} type="button">
@@ -18,9 +18,9 @@ export default function ThemeToggle() {
             id="theme"
             role="switch"
             name="theme"
-            value="dark"
+            value={theme}
           />
-          <span className="theme__fill" />
+          {/* <span className="theme__fill" /> */}
           <span className="theme__icon">
             <span className="theme__icon-part" />
             <span className="theme__icon-part" />

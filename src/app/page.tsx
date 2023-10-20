@@ -1,10 +1,16 @@
+import CategoriesCarousel from "@/widgets/caregories-carousel/categories-carousel";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-6xl font-bold text-center">  Example Text for blog</h1>
-      <div>
-        lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+    <main className="shadow-inner">
+      <div className="container h-[150px] flex items-center bg-white dark:bg-black">
+        <h1 className="page-title text-center">Blog about hiking</h1>
       </div>
+      <CategoriesCarousel />
+
+      <section>
+        <div className="container">Popular Posts</div>
+      </section>
     </main>
-  )
+  );
 }
