@@ -2,13 +2,39 @@
 
 import { useContext } from "react";
 import { ThemeContext } from "@/application/providers/context/ThemeContext";
+import "./theme-toggle.css";
 
 export default function ThemeToggle() {
-  const { theme, switchTheme } = useContext(ThemeContext);
+  const { switchTheme } = useContext(ThemeContext);
 
   return (
-    <div>
-      <button onClick={switchTheme}>{theme} mode</button>
-    </div>
+    <button onClick={switchTheme} type="button">
+      <label htmlFor="theme" className="theme">
+        <span>Light</span>
+        <span className="theme__toggle-wrap">
+          <input
+            type="checkbox"
+            className="theme__toggle"
+            id="theme"
+            role="switch"
+            name="theme"
+            value="dark"
+          />
+          <span className="theme__fill" />
+          <span className="theme__icon">
+            <span className="theme__icon-part" />
+            <span className="theme__icon-part" />
+            <span className="theme__icon-part" />
+            <span className="theme__icon-part" />
+            <span className="theme__icon-part" />
+            <span className="theme__icon-part" />
+            <span className="theme__icon-part" />
+            <span className="theme__icon-part" />
+            <span className="theme__icon-part" />
+          </span>
+        </span>
+        <span>Dark</span>
+      </label>
+    </button>
   );
 }
