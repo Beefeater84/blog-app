@@ -19,15 +19,24 @@ const config: Config = {
         current: "currentColor",
         "text-color": "#000",
         "active-color": "#50B5FF",
+        "blue-color": "#0062FF",
         "normal-color": "#171725",
         "menu-color": "#696974",
         "menu-color-dark": "#B5B5BE",
         "logo-color": "#44444F",
         "stroke-color": "#F1F1F5",
+        "grey-color": "#92929D",
       },
     },
   },
   plugins: [],
   darkMode: "class",
+  extend: {
+    colors: {
+      dark: {
+        "text-color": "#fff",
+      },
+    },
+  },
 };
 export default config;
