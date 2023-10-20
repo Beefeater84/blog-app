@@ -5,14 +5,18 @@
 :root {
     --text-color: #000;
     --background-color: #fff;
-
-
+    --active-color: #0062FF;
+    --normal-color: #171725;
 }
 
 
 .dark{
     --text-color: #fff;
     --background-color: #000;
+}
+
+body{
+    font-size: 14px;
 }
 
 .light{
@@ -23,6 +27,12 @@
 .content-provider{
     color: var(--text-color);
     background-color: var(--background-color);
+}
+
+.container{
+    max-width: 1200px;
+    padding-inline: 1rem;
+    margin: 0 auto;
 }
 
 

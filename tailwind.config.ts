@@ -1,20 +1,32 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/widgets/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/widgets/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/application/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        poppins: ["var(--font-poppins)"],
+        roboto: ["var(--font-roboto)"],
+      },
+      colors: {
+        transparent: "transparent",
+        current: "currentColor",
+        "text-color": "#000",
+        "background-color": "#fff",
+        "active-color": "#50B5FF",
+        "normal-color": "#171725",
+        "menu-color": "#696974",
+        "logo-color": "#44444F",
+        "stroke-color": "#F1F1F5",
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
