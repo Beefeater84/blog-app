@@ -7,6 +7,8 @@ async function getCategories(): Promise<Category[]> {
 
 export default async function CategoriesCarousel() {
   const categories = await getCategories();
+  // TODO Error handler
+  // TODO Refactor getCategories, put in separate file
 
   return (
     <section
