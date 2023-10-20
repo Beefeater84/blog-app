@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/application/db/connets";
 
+// eslint-disable-next-line import/prefer-default-export
 export const GET = async () => {
   try {
     const categories = await prisma.category.findMany();

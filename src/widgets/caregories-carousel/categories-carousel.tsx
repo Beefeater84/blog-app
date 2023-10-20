@@ -2,7 +2,7 @@ import { Category } from "@/entities/categories/types";
 
 async function getCategories(): Promise<Category[]> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/categories`);
-  return res.json();
+  return res.json() as Promise<Category[]>;
 }
 
 export default async function CategoriesCarousel() {
