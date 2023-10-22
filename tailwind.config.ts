@@ -26,6 +26,7 @@ const config: Config = {
         "logo-color": "#44444F",
         "stroke-color": "#F1F1F5",
         "grey-color": "#92929D",
+        "green-color": "#3DD598",
       },
     },
   },
