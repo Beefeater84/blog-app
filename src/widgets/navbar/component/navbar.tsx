@@ -12,7 +12,7 @@ export default function Navbar() {
         <nav>
           <ul className="flex gap-[28px] font-poppins font-semibold text-menu-color dark:text-menu-color-dark tracking-{0.2px}">
             <li className="">
-              <Link href="#" className="hover:text-active-color">
+              <Link href="/" className="hover:text-active-color">
                 Home
               </Link>
             </li>
