@@ -1,26 +1,13 @@
 import prisma from "@/application/db/connets";
 import { POST_PER_PAGE } from "@/entities/posts/const";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { Post } from "@prisma/client";
 
 // eslint-disable-next-line import/prefer-default-export
-
-type Data = {
-  posts: Post[];
-  count: number;
-};
-
-type ErrorResponse = {
-  message: string;
-};
-
-// eslint-disable-next-line import/prefer-default-export
-export const GET = async (
-  req: NextApiRequest,
-  res: NextApiResponse<Data | ErrorResponse>,
-) => {
+export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url || "");
   const page = searchParams.get("page") || 1;
+  const cat = searchParams.get("cat") || undefined;
+
+  const where = cat ? { categorySlug: cat } : {};
 
   const queryParams = {
     take: POST_PER_PAGE,
@@ -28,16 +15,21 @@ export const GET = async (
     include: {
       user: true,
     },
+    where,
   };
 
   try {
     const [posts, count] = await prisma.$transaction([
       prisma.post.findMany(queryParams),
-      prisma.post.count(),
+      prisma.post.count({
+        where,
+      }),
     ]);
 
-    return res.status(200).json({ posts, count });
+    return Response.json({ posts, count });
+
+    // return res.status(200).json({  });
   } catch (e) {
-    return res.status(500).json({ message: "Something went wrong!" });
+    return Response.json({ message: "Something went wrong!" });
   }
 };
