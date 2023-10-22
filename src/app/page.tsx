@@ -1,16 +1,24 @@
 import CategoriesCarousel from "@/widgets/caregories-carousel/categories-carousel";
+import PostList from "@/widgets/post-list/post-list";
 
-export default function Home() {
+interface HomeProps {
+  searchParams: {
+    page: string;
+  };
+}
+
+export default function Home({ searchParams }: HomeProps) {
+  const page = parseInt(searchParams.page, 10) || 1;
+
   return (
-    <main className="shadow-inner">
-      <div className="container h-[150px] flex items-center bg-white dark:bg-black">
-        <h1 className="page-title text-center">Blog about hiking</h1>
+    <main>
+      <div className="h-[150px] flex items-center bg-white dark:bg-black shadow-inner">
+        <div className="container">
+          <h1 className="page-title">Blog about hiking</h1>
+        </div>
       </div>
       <CategoriesCarousel />
-
-      <section>
-        <div className="container">Popular Posts</div>
-      </section>
+      <PostList page={page} />
     </main>
   );
 }

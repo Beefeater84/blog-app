@@ -1,3 +1,5 @@
+import { Post } from "@/entities/posts/types";
+
 export type CategoryTitle = string;
 export type CategorySlug = string;
 export type CategoryId = string;
@@ -8,4 +10,5 @@ export type Category = {
   slug: CategorySlug;
   title: CategoryTitle;
   img?: CategoryImgUrl;
+  posts: Post[];
 };

@@ -1,8 +1,9 @@
 import { Category } from "@/entities/categories/types";
+import Link from "next/link";
 
 async function getCategories(): Promise<Category[]> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/categories`);
-  return res.json();
+  return res.json() as Promise<Category[]>;
 }
 
 export default async function CategoriesCarousel() {
@@ -18,12 +19,11 @@ export default async function CategoriesCarousel() {
       {categories &&
         categories.map((cat) => {
           return (
-            <div
-              key={cat.id}
-              className="w-[140px] h-[60px] flex items-center justify-center bg-active-color rounded-md"
-            >
-              {cat.title}
-            </div>
+            <Link href={`/category?cat=${cat.slug}`} key={cat.id}>
+              <div className="w-[140px] h-[60px] flex items-center justify-center bg-active-color/10 rounded-md text-blue-color">
+                {cat.title}
+              </div>
+            </Link>
           );
         })}
     </section>
