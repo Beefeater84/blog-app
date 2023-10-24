@@ -26,10 +26,18 @@ export const GET = async (req: Request) => {
       }),
     ]);
 
-    return Response.json({ posts, count });
-
-    // return res.status(200).json({  });
+    return Response.json(
+      { posts, count },
+      {
+        status: 200,
+      },
+    );
   } catch (e) {
-    return Response.json({ message: "Something went wrong!" });
+    return Response.json(
+      { message: "Something went wrong!" },
+      {
+        status: 500,
+      },
+    );
   }
 };
