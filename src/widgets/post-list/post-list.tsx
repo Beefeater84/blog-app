@@ -1,20 +1,27 @@
 import PostLine from "@/features/post/post";
 import Pagination from "@/features/pagination/pagination";
 import { POST_PER_PAGE } from "@/entities/posts/const";
+import { CategorySlug } from "@/entities/categories/types";
 
-async function getPosts(page: number) {
+async function getPosts(page: number, cat: CategorySlug | undefined) {
+  let queryParams = `?page=${page}`;
+  if (cat !== undefined) {
+    queryParams += `&cat=${cat}`;
+  }
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/posts?page=${page}`,
+    `${process.env.NEXT_PUBLIC_HOST}/api/posts${queryParams}`,
   );
   return res.json();
 }
 
 interface PostListProps {
   page: number;
+  cat?: CategorySlug | undefined;
 }
 
-export default async function PostList({ page }: PostListProps) {
-  const { posts, count } = await getPosts(page);
+export default async function PostList({ page, cat }: PostListProps) {
+  const { posts, count } = await getPosts(page, cat);
 
   const hasPrev = page > 1;
   const hasNext = page * POST_PER_PAGE < count;
@@ -22,7 +29,9 @@ export default async function PostList({ page }: PostListProps) {
   return (
     <section>
       <div className="container">
-        <h2>Popular Posts</h2>
+        <h2 className="text-3xl pb-[1.5rem] pt-[2rem] font-semibold">
+          Recent posts
+        </h2>
 
         <div>
           {posts &&
