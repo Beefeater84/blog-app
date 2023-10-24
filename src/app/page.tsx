@@ -12,7 +12,7 @@ export default function Home({ searchParams }: HomeProps) {
 
   return (
     <main>
-      <div className="h-[150px] flex items-center bg-white dark:bg-black shadow-inner">
+      <div className="h-[150px] flex items-center bg-white dark:bg-black-light-color shadow-inner">
         <div className="container">
           <h1 className="page-title">Blog about hiking</h1>
         </div>

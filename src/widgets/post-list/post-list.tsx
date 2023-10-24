@@ -29,7 +29,9 @@ export default async function PostList({ page, cat }: PostListProps) {
   return (
     <section>
       <div className="container">
-        <h2>Popular Posts</h2>
+        <h2 className="text-3xl pb-[1.5rem] pt-[2rem] font-semibold">
+          Recent posts
+        </h2>
 
         <div>
           {posts &&

@@ -12,7 +12,7 @@ export default function Page({ searchParams }: PageProps) {
   const { cat } = searchParams;
   return (
     <main>
-      <div className="h-[150px] flex items-center bg-white dark:bg-black shadow-inner">
+      <div className="h-[150px] flex items-center bg-white dark:bg-black-light-color shadow-inner">
         <div className="container">
           <h1 className="page-title">{cat}</h1>
         </div>
