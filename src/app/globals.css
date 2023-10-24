@@ -26,6 +26,10 @@ section{
     position: relative;
 }
 
+main{
+    padding-bottom: 2rem;
+}
+
 .content-provider{
     transition: all 0.3s ease-in-out;
     color: var(--text-color);
@@ -44,6 +48,13 @@ h1.page-title{
     font-weight: 600;
     font-size: 3rem;
     letter-spacing: 0.2px;
+}
+
+h2{
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: 0.12px;
+    padding-bottom: 0.5rem;
 }
 
 
