@@ -15,6 +15,7 @@ export default function ThemeToggle() {
           <input
             type="checkbox"
             className="theme__toggle"
+            checked={theme === "dark"}
             id="theme"
             role="switch"
             name="theme"

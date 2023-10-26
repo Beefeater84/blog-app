@@ -18,6 +18,8 @@ const config: Config = {
         transparent: "transparent",
         current: "currentColor",
         "text-color": "#000",
+        "black-light-color": "#292932",
+        "black-title-color": "#FAFAFB",
         "active-color": "#50B5FF",
         "blue-color": "#0062FF",
         "normal-color": "#171725",
