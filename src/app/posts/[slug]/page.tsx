@@ -27,7 +27,7 @@ export default async function Page({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: `${description}` }}
         />
       </article>
-      <Comments />
+      <Comments slug={params.slug} />
     </main>
   );
 }
