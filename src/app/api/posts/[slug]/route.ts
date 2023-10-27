@@ -1,5 +1,5 @@
 import prisma from "@/application/db/connets";
-import {ParsedUrlQuery} from "querystring";
+import { ParsedUrlQuery } from "querystring";
 import getFirstStringOrUndefined from "@/shared/utilities/getFirstStringOrUndefined";
 
 // eslint-disable-next-line import/prefer-default-export
