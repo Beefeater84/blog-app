@@ -1,6 +1,7 @@
 import prisma from "@/application/db/connets";
 import { POST_PER_PAGE } from "@/entities/posts/const";
 import { getAuthOptions } from "@/application/auth/providers";
+import { Post } from "@prisma/client";
 
 export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url || "");
@@ -19,7 +20,7 @@ export const GET = async (req: Request) => {
   };
 
   try {
-    const [posts, count] = await prisma.$transaction([
+    const [posts, count]: [Post[], number] = await prisma.$transaction([
       prisma.post.findMany(queryParams),
       prisma.post.count({
         where,
@@ -45,7 +46,7 @@ export const GET = async (req: Request) => {
 export const POST = async (req: Request) => {
   const session = await getAuthOptions();
 
-  if (!session) {
+  if (!session || !session.user) {
     return Response.json(
       { message: "Not Authenticated!" },
       {
