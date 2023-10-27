@@ -1,5 +1,5 @@
-import { Category } from "@/entities/categories/types";
 import Link from "next/link";
+import { Category } from "@prisma/client";
 
 async function getCategories(): Promise<Category[]> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/categories`);

@@ -1,11 +1,19 @@
 import prisma from "@/application/db/connets";
+import { ParsedUrlQuery } from "querystring";
+import getFirstStringOrUndefined from "@/shared/utilities/getFirstStringOrUndefined";
+import { Post } from "@prisma/client";
 
 // eslint-disable-next-line import/prefer-default-export
-export const GET = async (req: Request, { params }) => {
+export const GET = async (
+  req: Request,
+  { params }: { params: ParsedUrlQuery },
+) => {
   try {
-    const post = await prisma.post.findUnique({
+    const { slug } = params;
+
+    const post: Post | null = await prisma.post.findUnique({
       where: {
-        slug: params.slug,
+        slug: getFirstStringOrUndefined({ value: slug }),
       },
     });
 
