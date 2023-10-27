@@ -1,7 +1,6 @@
 import prisma from "@/application/db/connets";
-import { ParsedUrlQuery } from "querystring";
+import {ParsedUrlQuery} from "querystring";
 import getFirstStringOrUndefined from "@/shared/utilities/getFirstStringOrUndefined";
-import { Post } from "@prisma/client";
 
 // eslint-disable-next-line import/prefer-default-export
 export const GET = async (
@@ -11,7 +10,7 @@ export const GET = async (
   try {
     const { slug } = params;
 
-    const post: Post | null = await prisma.post.findUnique({
+    const post = await prisma.post.findUnique({
       where: {
         slug: getFirstStringOrUndefined({ value: slug }),
       },
