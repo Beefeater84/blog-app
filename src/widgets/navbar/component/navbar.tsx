@@ -17,13 +17,13 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-active-color">
+              <Link href="/category" className="hover:text-active-color">
                 Categories
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-active-color">
-                Most popular posts
+              <Link href="/write" className="hover:text-active-color">
+                Write a new post
               </Link>
             </li>
           </ul>
