@@ -1,7 +1,7 @@
 import prisma from "@/application/db/connets";
 import { POST_PER_PAGE } from "@/entities/posts/const";
+import { getAuthOptions } from "@/application/auth/providers";
 
-// eslint-disable-next-line import/prefer-default-export
 export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url || "");
   const page = searchParams.get("page") || 1;
@@ -32,6 +32,38 @@ export const GET = async (req: Request) => {
         status: 200,
       },
     );
+  } catch (e) {
+    return Response.json(
+      { message: "Something went wrong!" },
+      {
+        status: 500,
+      },
+    );
+  }
+};
+
+export const POST = async (req: Request) => {
+  const session = await getAuthOptions();
+
+  if (!session) {
+    return Response.json(
+      { message: "Not Authenticated!" },
+      {
+        status: 401,
+      },
+    );
+  }
+
+  try {
+    const body = await req.json();
+
+    const post = await prisma.post.create({
+      data: { ...body, userEmail: session.user.email },
+    });
+
+    return Response.json(post, {
+      status: 200,
+    });
   } catch (e) {
     return Response.json(
       { message: "Something went wrong!" },

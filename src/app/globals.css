@@ -9,28 +9,32 @@
     --active-color: #0062FF;
     --normal-color: #171725;
     --grey-color: #92929D;
+    --menu-color: #696974;
+    --font-roboto: 'Roboto', sans-serif;
+
 
 }
 
 
-.dark{
+.dark {
     --text-color: #fff;
     --background-color: #000;
+    --menu-color: #FAFAFB;
 }
 
-body{
+body {
     font-size: 14px;
 }
 
-section{
+section {
     position: relative;
 }
 
-main{
+main {
     padding-bottom: 2rem;
 }
 
-.content-provider{
+.content-provider {
     transition: all 0.3s ease-in-out;
     color: var(--text-color);
     background-color: var(--background-color);
@@ -38,24 +42,35 @@ main{
     min-height: 100vh;
 }
 
-.container{
+.container {
     max-width: 1200px;
     padding-inline: 1rem;
     margin: 0 auto;
 }
 
-h1.page-title{
+h1.page-title {
     font-weight: 600;
     font-size: 3rem;
     letter-spacing: 0.2px;
 }
 
-h2{
+h2 {
     font-weight: 600;
     font-size: 2rem;
     letter-spacing: 0.12px;
     padding-bottom: 0.5rem;
 }
+
+article p,
+article .ql-editor p{
+    font-family: var(--font-roboto);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding-bottom: 1rem;
+    color: var(--menu-color);
+}
+
+
 
 
 
