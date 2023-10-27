@@ -14,7 +14,7 @@ export default function Page({ searchParams }: PageProps) {
     <main>
       <div className="h-[150px] flex items-center bg-white dark:bg-black-light-color shadow-inner">
         <div className="container">
-          <h1 className="page-title">{cat}</h1>
+          <h1 className="page-title">{cat || "All posts"}</h1>
         </div>
       </div>
       <PostList page={page} cat={cat} />
