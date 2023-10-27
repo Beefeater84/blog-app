@@ -6,6 +6,7 @@ export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url || "");
   const page = searchParams.get("page") || 1;
   const cat = searchParams.get("cat") || undefined;
+  console.log("rev");
 
   const where = cat ? { categorySlug: cat } : {};
 
