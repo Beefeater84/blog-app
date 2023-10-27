@@ -5,7 +5,6 @@ import Navbar from "@/widgets/navbar/component/navbar";
 import { ThemeContextProvider } from "@/application/providers/context/ThemeContext";
 import AuthProvider from "@/application/auth/AuthProvider";
 import localFont from "next/font/local";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Create Next App",

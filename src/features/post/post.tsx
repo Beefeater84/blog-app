@@ -1,7 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Post, User } from "@prisma/client";
 
-export default function PostLine({ post }) {
+interface PostLineProps {
+  post: Post & {
+    user: User;
+  };
+}
+
+export default function PostLine({ post }: PostLineProps) {
   const { title, description, img, slug, user } = post;
   return (
     <article className="bg-white dark:bg-black-light-color rounded-3xl p-[1rem] flex gap-[2rem] mb-[1rem] ">

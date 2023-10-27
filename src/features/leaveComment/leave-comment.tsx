@@ -42,16 +42,16 @@ export default function LeaveCommentForm({ postSlug }: LeaveCommentFormProps) {
         className="font-semibold text-grey-color tracking-{1.17px} pb-[1rem] block "
       >
         LEAVE A COMMENT
+        <textarea
+          rows={3}
+          className="w-[100%] p-[1rem] mb-[1rem] rounded-xl outline-active-color dark:text-white dark:bg-black-light-color"
+          id="addNewComment"
+          name="addNewComment"
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+          placeholder="Add the comment"
+        />
       </label>
-      <textarea
-        rows={3}
-        className="w-[100%] p-[1rem] mb-[1rem] rounded-xl outline-active-color dark:text-white dark:bg-black-light-color"
-        id="addNewComment"
-        name="addNewComment"
-        onChange={(e) => setDescription(e.target.value)}
-        value={description}
-        placeholder="Add the comment"
-      />
       <button type="submit">Send a comment</button>
     </form>
   );

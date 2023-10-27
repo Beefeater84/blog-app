@@ -1,7 +1,7 @@
 import PostLine from "@/features/post/post";
 import Pagination from "@/features/pagination/pagination";
 import { POST_PER_PAGE } from "@/entities/posts/const";
-import { Post } from "@prisma/client";
+import { Post, User } from "@prisma/client";
 
 async function getPosts(page: number, cat: string | undefined) {
   let queryParams = `?page=${page}`;
@@ -21,7 +21,7 @@ interface PostListProps {
 }
 
 interface getPostsProps {
-  posts: Post[];
+  posts: (Post & { user: User })[];
   count: number;
 }
 

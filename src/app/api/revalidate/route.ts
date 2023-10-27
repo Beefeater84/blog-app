@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { revalidateTag } from "next/cache";
 
 // e.g a webhook to `your-website.com/api/revalidate?tag=collection&secret=<token>`
+// eslint-disable-next-line import/prefer-default-export
 export async function POST(request: NextRequest) {
   // const secret = request.nextUrl.searchParams.get("secret");
   const tag = request.nextUrl.searchParams.get("tag");
