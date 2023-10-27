@@ -13,6 +13,7 @@ export default function ThemeToggle() {
         <span>Light</span>
         <span className="theme__toggle-wrap">
           <input
+            readOnly
             type="checkbox"
             className="theme__toggle"
             checked={theme === "dark"}
