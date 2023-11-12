@@ -10,8 +10,12 @@ export default function FixMountProvider({ children }: FixMountProviderProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    if (typeof window === "object") {
+      setMounted(true);
+    }
   }, []);
+
+  if (!mounted) return null;
 
   if (mounted) {
     return <div>{children}</div>;
