@@ -7,7 +7,8 @@ import { useSession } from "next-auth/react";
 import toSlug from "@/shared/utilities/toSlug";
 
 export default function Page() {
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
+  const value = "";
   const [title, setTitle] = useState<string>("");
   const { status, data } = useSession();
 
