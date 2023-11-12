@@ -2,7 +2,6 @@
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import "./ReactQuill.css";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import toSlug from "@/shared/utilities/toSlug";
