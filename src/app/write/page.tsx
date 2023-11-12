@@ -1,6 +1,5 @@
 "use client";
 
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./ReactQuill.css";
 import { useState } from "react";
@@ -51,12 +50,12 @@ export default function Page() {
       </div>
       <div className="container">
         <article>
-          <ReactQuill
-            theme="snow"
-            value={value}
-            onChange={setValue}
-            placeholder="Start here"
-          />
+          {/* <ReactQuill */}
+          {/*  theme="snow" */}
+          {/*  value={value} */}
+          {/*  onChange={setValue} */}
+          {/*  placeholder="Start here" */}
+          {/* /> */}
         </article>
         <button type="button" onClick={createPostHandler}>
           Create a post
