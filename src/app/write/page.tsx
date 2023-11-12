@@ -2,20 +2,16 @@
 
 import "react-quill/dist/quill.snow.css";
 import "./ReactQuill.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import toSlug from "@/shared/utilities/toSlug";
 import ReactQuill from "react-quill";
 
 export default function Page() {
   const [value, setValue] = useState("");
-  const [readyForBuild, setReadyForBuild] = useState(false);
   const [title, setTitle] = useState<string>("");
   const { status, data } = useSession();
 
-  useEffect(() => {
-    setReadyForBuild(true);
-  }, []);
   const createPostHandler = async () => {
     await fetch("/api/posts", {
       method: "POST",
@@ -32,7 +28,7 @@ export default function Page() {
     });
   };
 
-  if (status === "loading" || !readyForBuild) {
+  if (status === "loading") {
     return <div>Loading...</div>;
   }
 

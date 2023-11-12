@@ -5,6 +5,7 @@ import Navbar from "@/widgets/navbar/component/navbar";
 import { ThemeContextProvider } from "@/application/providers/context/ThemeContext";
 import AuthProvider from "@/application/auth/AuthProvider";
 import localFont from "next/font/local";
+import FixMountProvider from "@/application/providers/fix-mount-provider/FixMountProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -39,14 +40,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={[roboto.className, poppins.className].join(" ")}>
-        <ThemeContextProvider>
-          <AuthProvider>
-            <header>
-              <Navbar />
-            </header>
-            {children}
-          </AuthProvider>
-        </ThemeContextProvider>
+        <FixMountProvider>
+          <ThemeContextProvider>
+            <AuthProvider>
+              <header>
+                <Navbar />
+              </header>
+              {children}
+            </AuthProvider>
+          </ThemeContextProvider>
+        </FixMountProvider>
       </body>
     </html>
   );
