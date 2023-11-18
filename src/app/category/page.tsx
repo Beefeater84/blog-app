@@ -1,4 +1,5 @@
 import PostList from "@/widgets/post-list/post-list";
+import React from "react";
 
 interface PageProps {
   searchParams: {
