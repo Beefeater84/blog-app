@@ -1,3 +1,4 @@
+import React from "react";
 import CategoriesCarousel from "@/widgets/caregories-carousel/categories-carousel";
 import PostList from "@/widgets/post-list/post-list";
 
