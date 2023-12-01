@@ -16,14 +16,12 @@ type ThemeContextProviderProps = {
 };
 
 export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
-  const [localTheme, setLocalTheme] = useState<ThemeType>("light");
+  const [theme, setTheme] = useState<ThemeType>("light");
 
   useEffect(() => {
-    const theme = localStorage.getItem("theme") as ThemeType;
-    setLocalTheme(theme);
+    const savedTheme = localStorage.getItem("theme") as ThemeType;
+    setTheme(savedTheme || "light");
   }, []);
-
-  const [theme, setTheme] = useState<ThemeType>(localTheme);
 
   const switchTheme = () => {
     localStorage.setItem("theme", theme === "light" ? "dark" : "light");

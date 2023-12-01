@@ -29,6 +29,16 @@ export default async function Comments({ slug }: CommentProps) {
           const { id, description, createdAt, author } = comment;
           const { name, image } = author;
 
+          const date = new Date(createdAt);
+          const options: Intl.DateTimeFormatOptions = {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          };
+          const formattedDate = date
+            .toLocaleDateString("ru-RU", options)
+            .replace(/\//g, ".");
+
           return (
             <div
               key={id}
@@ -49,7 +59,7 @@ export default async function Comments({ slug }: CommentProps) {
                     {name}
                   </span>
                   <span className="text-xs text-menu-color font-roboto">
-                    {createdAt.toString()}
+                    {formattedDate}
                   </span>
                 </div>
                 <div className="text-xs font-roboto text-menu-color ">
