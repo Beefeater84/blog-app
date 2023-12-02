@@ -14,4 +14,3 @@ export default function getShortDescription(description: string): string {
   }
   return description;
 }
-
