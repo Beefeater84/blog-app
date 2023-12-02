@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Post, User } from "@prisma/client";
+import getShortDescription from "@/features/post/helpers/get-short-description";
 
 interface PostLineProps {
   post: Post & {
@@ -10,6 +11,9 @@ interface PostLineProps {
 
 export default function PostLine({ post }: PostLineProps) {
   const { title, description, img, slug, user } = post;
+
+  const shortDescription = getShortDescription(description);
+
   return (
     <article className="bg-white dark:bg-black-light-color rounded-3xl p-[1rem] flex gap-[2rem] mb-[1rem] ">
       {img && (
@@ -31,7 +35,7 @@ export default function PostLine({ post }: PostLineProps) {
           </h3>
         </Link>
         <div className="font-roboto text-grey-color mb-[1rem]">
-          <p>{description}</p>
+          <p>{shortDescription}</p>
         </div>
         <div className="text-xs flex items-center gap-[1rem]">
           {user.image && (
