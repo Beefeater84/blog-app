@@ -96,6 +96,13 @@ export default function TextEditor({ value, onChange }: TextEditorProps) {
         onChange={(e) => onChange(e)}
         modules={modules}
       />
+
+      <img
+        src="https://next-js-blog.s3.eu-north-1.amazonaws.com/Screenshot+2023-11-09+at+09.35.59.png"
+        alt="dd"
+        width={200}
+        height={200}
+      />
     </div>
   );
 }

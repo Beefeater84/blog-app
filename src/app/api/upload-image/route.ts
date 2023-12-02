@@ -17,13 +17,20 @@ export async function POST(request: Request) {
   const { fileName, fileType } = await request.json();
 
   try {
-    const client = new S3Client({ region: process.env.AWS_REGION });
+    const client = new S3Client({
+      region: process.env.AWS_REGION,
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      },
+    });
     const { url, fields } = await createPresignedPost(client, {
       Bucket: process.env.AWS_BUCKET_NAME || "",
-      Key: fileName,
+      Key: `${fileName}`,
       Conditions: [
         ["content-length-range", 0, 10485760],
-        ["starts-with", "$Content-Type", fileType],
+        // ["starts-with", "$Content-Type", fileType],
+        // ["starts-with", "$key", "user/"],
       ],
       Fields: {
         acl: "public-read",
