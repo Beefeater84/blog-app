@@ -6,6 +6,7 @@ import ReactQuill, { Quill } from "react-quill";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ImageUploader from "quill-image-uploader";
+import imgPostFormat from "@/shared/uploading/formats/blog";
 
 Quill.register("modules/imageUploader", ImageUploader);
 
@@ -23,7 +24,7 @@ async function uploadImageToS3(file: File) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        fileName: file.name,
+        fileName: imgPostFormat(file.name),
         fileType: file.type,
       }),
     },
@@ -48,9 +49,6 @@ export default function TextEditor({ value, onChange }: TextEditorProps) {
           ["clean"], // remove formatting button
           ["link", "image"], // link and image, video
         ],
-        // handlers: {
-        //   image: imageHandler,
-        // },
       },
       imageUploader: {
         upload: (file: File) => {
@@ -66,15 +64,11 @@ export default function TextEditor({ value, onChange }: TextEditorProps) {
 
                 formData.append("file", file);
 
-                console.log("formData", formData);
-                console.log("url", url);
-                console.log("fields", fields);
-
                 fetch(url, {
                   method: "POST",
                   body: formData,
                 }).then(() => {
-                  resolve(url);
+                  resolve(url + imgPostFormat(file.name));
                 });
               })
               .catch((error) => {
@@ -95,13 +89,6 @@ export default function TextEditor({ value, onChange }: TextEditorProps) {
         value={value}
         onChange={(e) => onChange(e)}
         modules={modules}
-      />
-
-      <img
-        src="https://next-js-blog.s3.eu-north-1.amazonaws.com/Screenshot+2023-11-09+at+09.35.59.png"
-        alt="dd"
-        width={200}
-        height={200}
       />
     </div>
   );
