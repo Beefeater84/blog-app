@@ -1,10 +1,5 @@
 import Link from "next/link";
-import { Category } from "@prisma/client";
-
-async function getCategories(): Promise<Category[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/categories`);
-  return res.json() as Promise<Category[]>;
-}
+import getCategories from "@/entities/categories/api/get-categories";
 
 export default async function CategoriesCarousel() {
   const categories = await getCategories();

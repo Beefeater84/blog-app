@@ -1,16 +1,35 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import "./ReactQuill.css";
 import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
 import toSlug from "@/shared/utilities/toSlug";
+import Button from "@/shared/ui/buttons";
+import getCategories from "@/entities/categories/api/get-categories";
+import { Category } from "@prisma/client";
 
 export default function Page() {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState<string>("");
   const { status, data } = useSession();
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const categoriesFromServer = useCallback(async () => {
+    const res = await getCategories();
+    setCategories(res);
+    setSelectedCategory(res[0].slug);
+  }, []);
+
+  useEffect(() => {
+    categoriesFromServer();
+  }, [categoriesFromServer]);
+
+  const onChoseCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategory(e.target.value);
+  };
 
   const DynamicTextEditor = useMemo(() => {
     return dynamic(() => import("@/widgets/text-editor/text-editor"), {
@@ -28,17 +47,26 @@ export default function Page() {
         slug: toSlug(title),
         title,
         description: value,
-        categorySlug: "popular-hikes",
+        categorySlug: selectedCategory,
         userEmail: data?.user?.email,
       }),
     });
   };
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return (
+      <div className="container">
+        <div>Loading...</div>
+      </div>
+    );
   }
 
-  if (status === "unauthenticated") return <div>Unauthenticated</div>;
+  if (status === "unauthenticated")
+    return (
+      <div className="container">
+        <div>You need to login to create a post</div>
+      </div>
+    );
 
   return (
     <main>
@@ -59,9 +87,30 @@ export default function Page() {
         <article>
           <DynamicTextEditor value={value} onChange={setValue} />
         </article>
-        <button type="button" onClick={createPostHandler}>
-          Create a post
-        </button>
+        <div>
+          Choose a category:
+          <select
+            className="bg-white dark:bg-black-light-color"
+            defaultValue={selectedCategory || undefined}
+            name="category"
+            id="category"
+            onInput={onChoseCategory}
+          >
+            {categories.map((category) => (
+              <option
+                value={category.slug}
+                key={category.slug}
+                selected={
+                  selectedCategory ? selectedCategory === category.slug : false
+                }
+              >
+                {category.title}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <Button onClick={createPostHandler}>Create a post</Button>
       </div>
     </main>
   );
