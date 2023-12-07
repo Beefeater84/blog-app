@@ -44,7 +44,7 @@ export default function LeaveCommentForm({ postSlug }: LeaveCommentFormProps) {
         LEAVE A COMMENT
         <textarea
           rows={3}
-          className="w-[100%] p-[1rem] mb-[1rem] rounded-xl outline-active-color dark:text-white dark:bg-black-light-color"
+          className="w-[100%] p-[1rem] mb-[1rem]  mt-[1rem] rounded-xl outline-active-color dark:text-white dark:bg-black-light-color"
           id="addNewComment"
           name="addNewComment"
           onChange={(e) => setDescription(e.target.value)}
