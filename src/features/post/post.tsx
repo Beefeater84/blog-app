@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Post, User } from "@prisma/client";
 import getShortDescription from "@/features/post/helpers/get-short-description";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 interface PostLineProps {
   post: Post & {
