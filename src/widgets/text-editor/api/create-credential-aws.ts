@@ -1,8 +1,8 @@
 import imgPostFormat from "@/shared/uploading/formats/blog";
 
-export default async function uploadImageToS3(file: File) {
+export default async function createCredentialsImg(file: File) {
   const result = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/upload-image`,
+    `${process.env.NEXT_PUBLIC_HOST}/api/create-credential-for-img`,
     {
       method: "POST",
       headers: {

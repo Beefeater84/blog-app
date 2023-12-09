@@ -7,31 +7,14 @@ import ReactQuill, { Quill } from "react-quill";
 // @ts-ignore
 import ImageUploader from "quill-image-uploader";
 import imgPostFormat from "@/shared/uploading/formats/blog";
+import uploadImageToS3 from "@/widgets/text-editor/api/upload-img-to-aws";
+import createCredentialsImg from "@/widgets/text-editor/api/create-credential-aws";
 
 Quill.register("modules/imageUploader", ImageUploader);
 
 interface TextEditorProps {
   value: string;
   onChange: React.Dispatch<React.SetStateAction<string>>;
-}
-
-async function uploadImageToS3(file: File) {
-  const result = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/upload-image`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fileName: imgPostFormat(file.name),
-        fileType: file.type,
-      }),
-    },
-  );
-
-  const { url, fields } = await result.json();
-  return { url, fields };
 }
 
 export default function TextEditor({ value, onChange }: TextEditorProps) {
@@ -53,7 +36,7 @@ export default function TextEditor({ value, onChange }: TextEditorProps) {
       imageUploader: {
         upload: (file: File) => {
           return new Promise((resolve, reject) => {
-            uploadImageToS3(file)
+            createCredentialsImg(file)
               .then((response) => {
                 const { url, fields } = response;
 
